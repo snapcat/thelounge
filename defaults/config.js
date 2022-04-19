@@ -257,7 +257,7 @@ module.exports = {
 		rejectUnauthorized: true,
 		nick: "thelounge%%",
 		username: "thelounge",
-		realname: "The Lounge User",
+		realname: "",
 		join: "#thelounge",
 		leaveMessage: "",
 	},

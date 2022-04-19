@@ -100,7 +100,7 @@ Network.prototype.validate = function (client) {
 	}
 
 	this.username = cleanString(this.username) || "thelounge";
-	this.realname = cleanString(this.realname) || "The Lounge User";
+	this.realname = cleanString(this.realname) || this.nick;
 	this.leaveMessage = cleanString(this.leaveMessage);
 	this.password = cleanString(this.password);
 	this.host = cleanString(this.host).toLowerCase();
