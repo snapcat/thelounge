@@ -239,6 +239,13 @@ module.exports = function (options = {}) {
 
 		process.on("SIGINT", exitGracefully);
 		process.on("SIGTERM", exitGracefully);
+		process.on("uncaughtException", (err) => {
+			// eslint-disable-next-line no-console
+			console.error(
+				`An uncaught exception occured. Please report this to the developers.\n`,
+				err.message + "\n" + err.stack
+			);
+		});
 
 		// Clear storage folder after server starts successfully
 		if (Helper.config.prefetchStorage) {

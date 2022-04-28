@@ -59,7 +59,7 @@ exports.input = function ({irc}, chan, cmd, args) {
 	// This has the added benefit of easily showing it in the same buffer
 	// as the WHO command.
 	irc.who(args[0], (event) => {
-		if (!event.users?.length) {
+		if (!event.users.length) {
 			chan.pushMessage(
 				this,
 				new Msg({
