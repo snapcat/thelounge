@@ -1,6 +1,10 @@
 <template>
 	<ChannelWrapper ref="wrapper" v-bind="$props">
 		<span class="name">{{ channel.name }}</span>
+		<StatusIcon
+			v-if="channel.type === 'query' && !active && network.status.connected"
+			:online="channel.isOnline"
+		/>
 		<span
 			v-if="channel.unread"
 			:class="{highlight: channel.highlight && !channel.muted}"
@@ -30,11 +34,13 @@
 <script>
 import roundBadgeNumber from "../js/helpers/roundBadgeNumber";
 import ChannelWrapper from "./ChannelWrapper.vue";
+import StatusIcon from "./StatusIcon.vue";
 
 export default {
 	name: "Channel",
 	components: {
 		ChannelWrapper,
+		StatusIcon,
 	},
 	props: {
 		network: Object,

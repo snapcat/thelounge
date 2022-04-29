@@ -52,6 +52,10 @@ module.exports = function (irc, network) {
 
 		network.channels.forEach((chan) => {
 			if (chan.type !== Chan.Type.CHANNEL) {
+				if (chan.type === Chan.Type.QUERY) {
+					network.monitor(chan.name);
+				}
+
 				return;
 			}
 
@@ -202,6 +206,8 @@ module.exports = function (irc, network) {
 		}
 
 		network.serverOptions.NETWORK = data.options.NETWORK;
+
+		network.serverOptions.MONITOR = data.options.MONITOR;
 
 		client.emit("network:options", {
 			network: network.uuid,

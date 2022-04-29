@@ -62,6 +62,8 @@ function Network(attr) {
 		chanCache: [],
 		ignoreList: [],
 		keepNick: null,
+		monitorList: [],
+		toBeMonitored: [],
 	});
 
 	if (!this.uuid) {
@@ -456,7 +458,34 @@ Network.prototype.addChannel = function (newChan) {
 	}
 
 	this.channels.splice(index, 0, newChan);
+
+	if (newChan.type === Chan.Type.QUERY) {
+		if (!this.monitorList.includes(newChan.name)) {
+			this.monitor(newChan.name);
+		}
+	}
+
 	return index;
+};
+
+Network.prototype.monitor = function (target) {
+	this.irc.addMonitor(target);
+
+	if (this.monitorList.length < this.serverOptions.MONITOR) {
+		this.monitorList.push(target);
+	} else {
+		// TODO: ISON fallback?
+		this.toBeMonitored.push(target);
+	}
+};
+
+Network.prototype.removeMonitor = function (target) {
+	this.irc.removeMonitor(target);
+	this.monitorList = this.monitorList.filter((monitored) => monitored !== target);
+
+	if (this.toBeMonitored.length > 0) {
+		this.monitor(this.toBeMonitored.shift());
+	}
 };
 
 Network.prototype.quit = function (quitMessage) {

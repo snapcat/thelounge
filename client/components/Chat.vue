@@ -21,6 +21,11 @@
 					<span class="title" :aria-label="'Currently open ' + channel.type">{{
 						channel.name
 					}}</span>
+					<StatusIcon
+						v-if="channel.type === 'query'"
+						:online="channel.isOnline"
+						tooltip-dir="e"
+					/>
 					<div v-if="channel.editTopic === true" class="topic-container">
 						<input
 							ref="topicInput"
@@ -133,7 +138,7 @@ import ListBans from "./Special/ListBans.vue";
 import ListInvites from "./Special/ListInvites.vue";
 import ListChannels from "./Special/ListChannels.vue";
 import ListIgnored from "./Special/ListIgnored.vue";
-
+import StatusIcon from "./StatusIcon.vue";
 export default {
 	name: "Chat",
 	components: {
@@ -143,6 +148,7 @@ export default {
 		ChatUserList,
 		SidebarToggle,
 		MessageSearchForm,
+		StatusIcon,
 	},
 	props: {
 		network: Object,

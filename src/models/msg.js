@@ -87,6 +87,8 @@ Msg.Type = {
 	RAW: "raw",
 	PLUGIN: "plugin",
 	WALLOPS: "wallops",
+	ONLINE: "online",
+	OFFLINE: "offline",
 };
 
 module.exports = Msg;

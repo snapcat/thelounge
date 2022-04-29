@@ -64,6 +64,7 @@ module.exports = function (irc, network) {
 					}
 
 					user.away = away;
+					chan.setUser(user);
 
 					break;
 				}

@@ -16,3 +16,27 @@ socket.on("users", function (data) {
 		channel.channel.usersOutdated = true;
 	}
 });
+
+socket.on("users:online", function ({changedChannels, networkId}) {
+	for (const network of store.state.networks) {
+		if (network.id === networkId) {
+			for (const channel of network.channels) {
+				if (changedChannels.includes(channel.name)) {
+					channel.isOnline = true;
+				}
+			}
+		}
+	}
+});
+
+socket.on("users:offline", function ({changedChannels, networkId}) {
+	for (const network of store.state.networks) {
+		if (network.id === networkId) {
+			for (const channel of network.channels) {
+				if (changedChannels.includes(channel.name)) {
+					channel.isOnline = false;
+				}
+			}
+		}
+	}
+});

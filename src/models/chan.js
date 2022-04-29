@@ -43,6 +43,10 @@ function Chan(attr) {
 		users: new Map(),
 		muted: false,
 	});
+
+	if (this.type === Chan.Type.QUERY) {
+		this.isOnline = true;
+	}
 }
 
 Chan.prototype.destroy = function () {
