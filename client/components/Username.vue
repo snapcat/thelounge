@@ -6,22 +6,32 @@
 		v-on="onHover ? {mouseenter: hover} : {}"
 		@click.prevent="openContextMenu"
 		@contextmenu.prevent="openContextMenu"
-		><slot v-if="!html"
-			>{{ mode }}{{ user.nick }}
-			<StatusIcon v-if="showStatusIcon" :away="!!user.away" :tooltip-dir="'w'" :online="true"
-		/></slot>
-		<slot v-else>
-			<span class="nick" v-html="html"></span>
+		><slot v-if="!html">
 			<StatusIcon
 				v-if="showStatusIcon"
 				:away="!!user.away"
-				:tooltip-dir="'w'"
+				:tooltip-dir="'e'"
+				:online="true"
+			/>{{ mode }}{{ user.nick }}
+		</slot>
+		<slot v-else>
+			<StatusIcon
+				v-if="showStatusIcon"
+				:away="!!user.away"
+				:tooltip-dir="'e'"
 				:online="true"
 			/>
+			<span class="nick" v-html="html"></span>
 		</slot>
 	</span>
 </template>
 
+<style scoped>
+/* Status icon */
+.status {
+	margin-right: 4px;
+}
+</style>
 <script>
 import eventbus from "../js/eventbus";
 import colorClass from "../js/helpers/colorClass";

@@ -16,8 +16,6 @@
 	height: 8px;
 	border-radius: 50%;
 	display: inline-block;
-	margin-right: 6px;
-	margin-left: 6px;
 }
 
 .online::after {
