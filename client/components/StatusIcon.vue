@@ -8,6 +8,14 @@
 </template>
 
 <style>
+.status {
+	width: 16px;
+	height: 16px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .online::after,
 .away::after,
 .offline::after {

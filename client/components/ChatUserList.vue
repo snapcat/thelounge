@@ -56,7 +56,7 @@
 	</aside>
 </template>
 
-<style scoped>
+<style>
 .userlist {
 	border-left: 1px solid #e7e7e7;
 	width: 180px;
@@ -150,6 +150,12 @@
 
 #chat .user-mode-search::before {
 	content: "Search Results";
+}
+
+/* Status icon */
+#chat .names .status {
+	margin-left: -3px;
+	margin-right: 2px;
 }
 
 @media (max-width: 768px) {

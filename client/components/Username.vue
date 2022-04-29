@@ -26,12 +26,6 @@
 	</span>
 </template>
 
-<style scoped>
-/* Status icon */
-.status {
-	margin-right: 4px;
-}
-</style>
 <script>
 import eventbus from "../js/eventbus";
 import colorClass from "../js/helpers/colorClass";
