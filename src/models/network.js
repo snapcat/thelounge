@@ -198,6 +198,7 @@ Network.prototype.createIrcFramework = function (client) {
 
 	this.irc.requestCap([
 		"znc.in/self-message", // Legacy echo-message for ZNC
+		"draft/extended-monitor",
 	]);
 
 	// Request only new messages from ZNC if we have sqlite logging enabled

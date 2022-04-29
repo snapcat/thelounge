@@ -24,6 +24,7 @@
 					<StatusIcon
 						v-if="channel.type === 'query'"
 						:online="channel.isOnline"
+						:away="!!channel.userAway"
 						tooltip-dir="e"
 					/>
 					<div v-if="channel.editTopic === true" class="topic-container">

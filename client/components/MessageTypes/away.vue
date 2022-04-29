@@ -4,7 +4,9 @@
 		<template v-else>
 			<Username :user="message.from" />
 			is away
-			<i class="away-message">(<ParsedMessage :network="network" :message="message" />)</i>
+			<i v-if="awayMessage" class="away-message">
+				(<ParsedMessage :network="network" :message="message" />)
+			</i>
 		</template>
 	</span>
 </template>
@@ -22,6 +24,11 @@ export default {
 	props: {
 		network: Object,
 		message: Object,
+	},
+	computed: {
+		awayMessage() {
+			return this.message.text.trim();
+		},
 	},
 };
 </script>
