@@ -55,7 +55,7 @@ module.exports = function (irc, network) {
 			});
 		}
 
-		const user = new User({nick: data.nick});
+		const user = new User({nick: data.nick, account: data.account});
 		const msg = new Msg({
 			time: data.time,
 			from: user,
@@ -72,7 +72,7 @@ module.exports = function (irc, network) {
 			chan: chan.id,
 		});
 
-		// If we join a channel, we a perform a WHO to get the user's away status
+		// If we join a channel, we aperform a WHO to get all the users away statuses
 		if (isSelf) {
 			performWhoOnChannel(chan);
 		}

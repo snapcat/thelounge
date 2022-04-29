@@ -21,6 +21,7 @@ const TextFileMessageStorage = require("./plugins/messageStorage/text");
 module.exports = Client;
 
 const events = [
+	"account",
 	"away",
 	"cap",
 	"connection",

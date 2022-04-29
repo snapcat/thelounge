@@ -33,5 +33,6 @@ User.prototype.toJSON = function () {
 		modes: this.modes,
 		lastMessage: this.lastMessage,
 		away: this.away,
+		account: this.account,
 	};
 };
