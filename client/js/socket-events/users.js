@@ -25,6 +25,8 @@ socket.on("users:online", function ({changedChannels, networkId}) {
 					channel.isOnline = true;
 				}
 			}
+
+			break;
 		}
 	}
 });
@@ -37,6 +39,8 @@ socket.on("users:offline", function ({changedChannels, networkId}) {
 					channel.isOnline = false;
 				}
 			}
+
+			break;
 		}
 	}
 });
