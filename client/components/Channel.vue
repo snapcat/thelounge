@@ -2,7 +2,7 @@
 	<ChannelWrapper ref="wrapper" v-bind="$props">
 		<span class="name">{{ channel.name }}</span>
 		<StatusIcon
-			v-if="channel.type === 'query' && !active && network.status.connected"
+			v-if="channel.type === 'query' && network.status.connected"
 			:online="channel.isOnline"
 			:away="!!channel.userAway"
 		/>

@@ -31,6 +31,10 @@
 .away::after {
 	background-color: gray;
 }
+
+.status {
+	z-index: 0;
+}
 </style>
 
 <script>
@@ -43,7 +47,7 @@ export default {
 	},
 	computed: {
 		tooltipDirClass() {
-			return `tooltipped-${this.tooltipDir || "w"}`;
+			return `tooltipped-${this.tooltipDir ? `${this.tooltipDir}` : "w"}`;
 		},
 		ariaLabel() {
 			if (this.away) {

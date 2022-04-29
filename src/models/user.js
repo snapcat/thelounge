@@ -9,6 +9,7 @@ function User(attr, prefix) {
 		modes: [],
 		away: "",
 		nick: "",
+		account: "",
 		lastMessage: 0,
 	});
 
@@ -31,5 +32,6 @@ User.prototype.toJSON = function () {
 		nick: this.nick,
 		modes: this.modes,
 		lastMessage: this.lastMessage,
+		away: this.away,
 	};
 };

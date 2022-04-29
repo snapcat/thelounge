@@ -6,22 +6,39 @@
 		v-on="onHover ? {mouseenter: hover} : {}"
 		@click.prevent="openContextMenu"
 		@contextmenu.prevent="openContextMenu"
-		><slot>{{ mode }}{{ user.nick }}</slot></span
-	>
+		><slot v-if="!html"
+			>{{ mode }}{{ user.nick }}
+			<StatusIcon v-if="showStatusIcon" :away="!!user.away" :tooltip-dir="'w'" :online="true"
+		/></slot>
+		<slot v-else>
+			<span class="nick" v-html="html"></span>
+			<StatusIcon
+				v-if="showStatusIcon"
+				:away="!!user.away"
+				:tooltip-dir="'w'"
+				:online="true"
+			/>
+		</slot>
+	</span>
 </template>
 
 <script>
 import eventbus from "../js/eventbus";
 import colorClass from "../js/helpers/colorClass";
-
+import StatusIcon from "./StatusIcon.vue";
 export default {
 	name: "Username",
+	components: {
+		StatusIcon,
+	},
 	props: {
 		user: Object,
 		active: Boolean,
 		onHover: Function,
 		channel: Object,
 		network: Object,
+		showStatusIcon: Boolean,
+		html: String,
 	},
 	computed: {
 		mode() {

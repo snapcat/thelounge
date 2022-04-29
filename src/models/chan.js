@@ -45,7 +45,7 @@ function Chan(attr) {
 	});
 
 	if (this.type === Chan.Type.QUERY) {
-		this.isOnline = true;
+		this.isOnline = false;
 	}
 }
 
