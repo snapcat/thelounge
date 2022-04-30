@@ -13,7 +13,7 @@ module.exports = function (irc, network) {
 				if (channel.type === Chan.Type.QUERY && channel.name === nick) {
 					channel.isOnline = true;
 					changedChannels.push(channel.name);
-					break;
+					continue;
 				}
 			}
 		}
@@ -29,7 +29,7 @@ module.exports = function (irc, network) {
 				if (channel.type === Chan.Type.QUERY && channel.name === nick) {
 					channel.isOnline = false;
 					changedChannels.push(channel.name);
-					break;
+					continue;
 				}
 			}
 		}
