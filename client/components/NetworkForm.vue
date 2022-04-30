@@ -398,6 +398,9 @@ the server tab on new connection"
 			</template>
 
 			<div>
+				<div v-if="disabledReason && disabled" class="disabled-reason">
+					{{ disabledReason }}
+				</div>
 				<button type="submit" class="btn" :disabled="disabled ? true : false">
 					<template v-if="defaults.uuid">Save network</template>
 					<template v-else>Connect</template>
@@ -407,7 +410,7 @@ the server tab on new connection"
 	</div>
 </template>
 
-<style>
+<style scoped>
 #connect .connect-auth {
 	display: block;
 	margin-bottom: 10px;
@@ -433,6 +436,11 @@ the server tab on new connection"
 	margin: 0;
 	user-select: text;
 }
+
+.disabled-reason {
+	margin-top: 10px;
+	font-size: 12px;
+}
 </style>
 
 <script>
@@ -449,6 +457,7 @@ export default {
 		handleSubmit: Function,
 		defaults: Object,
 		disabled: Boolean,
+		disabledReason: String,
 	},
 	data() {
 		return {

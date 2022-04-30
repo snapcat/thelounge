@@ -1,5 +1,10 @@
 <template>
-	<NetworkForm :handle-submit="handleSubmit" :defaults="defaults" :disabled="disabled" />
+	<NetworkForm
+		:disabled-reason="disabledReason"
+		:handle-submit="handleSubmit"
+		:defaults="defaults"
+		:disabled="disabled"
+	/>
 </template>
 
 <script>
@@ -23,14 +28,26 @@ export default {
 		);
 		return {
 			disabled: false,
+			disabledReason: "",
 			defaults,
 		};
+	},
+	mounted() {
+		if (this.$store.state.serverConfiguration.lockNetwork) {
+			if (this.$store.state.networks.length > 0) {
+				this.disabled = true;
+				this.disabledReason = "You have already connected and cannot connect again.";
+			} else {
+				this.disabled = false;
+			}
+		}
 	},
 	methods: {
 		handleSubmit(data) {
 			this.disabled = true;
 			socket.emit("network:new", data);
 		},
+
 		parseOverrideParams(params) {
 			const parsedParams = {};
 

@@ -393,6 +393,12 @@ function initializeClient(socket, client, token, lastMessage, openChannel) {
 	});
 
 	socket.on("network:new", (data) => {
+		if (Helper.config.lockNetwork) {
+			if (client.networks.length > 0) {
+				return;
+			}
+		}
+
 		if (_.isPlainObject(data)) {
 			// prevent people from overriding webirc settings
 			data.uuid = null;
