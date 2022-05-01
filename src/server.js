@@ -393,7 +393,7 @@ function initializeClient(socket, client, token, lastMessage, openChannel) {
 	});
 
 	socket.on("network:new", (data) => {
-		if (Helper.config.lockNetwork) {
+		if (Config.values.lockNetwork) {
 			if (client.networks.length > 0) {
 				return;
 			}
