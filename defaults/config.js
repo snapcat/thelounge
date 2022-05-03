@@ -16,7 +16,7 @@ module.exports = {
 	//   channels and scrollbacks are available when they come back.
 	//
 	// This value is set to `false` by default.
-	public: true,
+	public: false,
 
 	// ### `host`
 	//
@@ -33,7 +33,7 @@ module.exports = {
 	// Set the port to listen to.
 	//
 	// This value is set to `9000` by default.
-	port: 2002,
+	port: 9000,
 
 	// ### `bind`
 	//
